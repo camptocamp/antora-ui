@@ -1,0 +1,52 @@
+name: Run Gulp bundle
+
+# Controls when the action will run.
+on:
+  push:
+    # On which branch
+    branches: ["master"]
+    # On which files
+    # paths: ["scripts/scripts.js", "styles/styles.scss"]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # Job name
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      # Sets up node
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: npm ci
+      - run: gulp
+      - uses: dev-drprasad/delete-older-releases@v0.1.0
+        with:
+          keep_latest: 0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        with:
+          tag_name: LATEST
+          release_name: Release LATEST
+          body: |
+            Release of the bundle-ui
+          draft: false
+          prerelease: true
+      - name: Upload Release Asset
+        id: upload-release-asset 
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: build/ui-bundle.zip
+          asset_name: ui-bundle.zip
+          asset_content_type: application/zip
