@@ -40,4 +40,4 @@ jobs:
         with:
           name: public
       - name: 'Echo download path'
-        run: echo ${{steps.download.outputs.download-pa
+        run: echo ${{steps.download.outputs.download-path}}
