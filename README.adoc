@@ -26,9 +26,7 @@ Based on {url-project}
 
 
 [IMPORTANT]
-.Keep Camptocamp's fork up-to-date
 ====
-
 To maintain this repository up-to-date with the upstream, please do the following:
 
 [source,bash,subs=attributes+]
