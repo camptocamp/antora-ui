@@ -1,8 +1,11 @@
-= Antora Default UI
+= Antora UI for Camptocamp
 // Settings:
 :experimental:
 :hide-uri-scheme:
 // Project URLs:
+:camptocamp-project-name: antora-ui
+:camptocamp-url-project: git@github.com:camptocamp/{camptocamp-project-name}.git
+:camptocamp-url-preview: https://camptocamp.github.io/antora-ui
 :url-project: https://gitlab.com/antora/antora-ui-default
 :url-preview: https://antora.gitlab.io/antora-ui-default
 :url-ci-pipelines: {url-project}/pipelines
@@ -19,16 +22,41 @@
 :url-nvm-install: {url-nvm}#installation
 :url-source-maps: https://developer.mozilla.org/en-US/docs/Tools/Debugger/How_to/Use_a_source_map
 
-image:{img-ci-status}[CI Status (GitLab CI), link={url-ci-pipelines}]
+Based on {url-project}
 
-This project is an archetype that demonstrates how to produce a UI bundle that can be used by {url-antora}[Antora] to generated a documentation site.
-You can see a preview of the default UI at {url-preview}.
 
-While the default UI is ready to be used with Antora, the intent is that you'll fork it and customize it for your own needs.
-It's intentionally minimalistic so as to give you a good starting point without requiring too much effort to customize.
+[IMPORTANT]
+.Keep Camptocamp's fork up-to-date
+====
 
-== Use the Default UI
+To maintain this repository up-to-date with the upstream, please do the following:
 
+[source,bash,subs=attributes+]
+$ git clone {camptocamp-url-project} && cd "{camptocamp-project-name}"
+$ git remote -v
+$ git remote add upstream {url-project}
+$ git remote -v
+
+Create a local branch synced with the original repository
+
+[source,bash,subs=attributes+]
+$ git fetch upstream
+$ git checkout -b upstream_master upstream/master
+
+Syncronize local master branch with upstream
+
+[source,bash,subs=attributes+]
+$ git checkout master
+$ git pull
+$ git rebase upstream_master
+
+For more explanation, read this blog post : https://statnmap.com/2019-05-12-keep-github-gitlab-fork-up-to-date[Keep a github/gitlab fork up-to-date]
+
+====
+
+== Use the UI
+
+TODO: Rewrite this part once ui-bundle packaged
 If you want to simply use the default UI for your Antora-generated site, add the following UI configuration to your playbook:
 
 [source,yaml]
