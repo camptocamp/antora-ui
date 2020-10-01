@@ -23,20 +23,33 @@ jobs:
           node-version: 12
       - run: npm ci
       - run: gulp
-      - name: Save ui-bundle
-        uses: actions/upload-artifact@v2
-        with:
-          name: ui-bundle
-          path: build/ui-bundle.zip
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/download-artifact@v2
-        id: download
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          name: ui-bundle
-      - name: 'Echo download path'
-        run: ls -Al ${{steps.download.outputs.download-path}}
+          tag_name: LATEST
+          release_name: Release LATEST
+          body: |
+            Release of the bundle-ui
+          draft: true
+          prerelease: true
+  #     - name: Save ui-bundle
+  #       uses: actions/upload-artifact@v2
+  #       with:
+  #         name: ui-bundle
+  #         path: build/ui-bundle.zip
+
+  # deploy:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #     - uses: actions/download-artifact@v2
+  #       id: download
+  #       with:
+  #         name: ui-bundle
+  #     - name: 'Echo download path'
