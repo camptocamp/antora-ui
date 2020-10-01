@@ -43,12 +43,12 @@ Create a local branch synced with the original repository
 $ git fetch upstream
 $ git checkout -b upstream_master upstream/master
 
-Syncronize local master branch with upstream
+Syncronize local branch with upstream
 
 [source,bash,subs=attributes+]
-$ git checkout master
+$ git checkout my-branch
 $ git pull
-$ git rebase upstream_master
+$ git merge upstream_master
 
 For more explanation, read this blog post : https://statnmap.com/2019-05-12-keep-github-gitlab-fork-up-to-date[Keep a github/gitlab fork up-to-date]
 
