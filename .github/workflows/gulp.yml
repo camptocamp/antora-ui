@@ -24,10 +24,20 @@ jobs:
           node-version: 12
       - run: npm ci
       - run: gulp
+      - name: Save build folder
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: build
+
+  deploy:
+    # Runner name
+    runs-on: ubuntu-latest
+
+    steps:
       - uses: actions/download-artifact@v2
         id: download
         with:
-          name: 'ui-bundle.zip'
-          path: build/ui-bundle.zip
+          name: public
       - name: 'Echo download path'
-        run: echo ${{steps.download.outputs.download-path}}
+        run: echo ${{steps.download.outputs.download-pa
