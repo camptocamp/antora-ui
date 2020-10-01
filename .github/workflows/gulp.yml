@@ -12,7 +12,6 @@ on:
 jobs:
   # Job name
   build:
-    # Runner name
     runs-on: ubuntu-latest
 
     steps:
@@ -31,7 +30,7 @@ jobs:
           path: build
 
   deploy:
-    # Runner name
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
