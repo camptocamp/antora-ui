@@ -24,14 +24,10 @@ jobs:
           node-version: 12
       - run: npm ci
       - run: gulp
-            
-      # - name: Commit files
-      #   run: |
-      #     git config --local user.name  ${{ github.actor }}
-      #     git add -A
-      #     git commit -m "Update gulp output files"
-      # - name: Push changes
-      #   uses: ad-m/github-push-action@master
-      #   with:
-      #     github_token: ${{ secrets.REPO_GITHUB_TOKEN }}
-      #     # force: true
+      - uses: actions/download-artifact@v2
+        id: download
+        with:
+          name: 'ui-bundle.zip'
+          path: build/ui-bundle.zip
+      - name: 'Echo download path'
+        run: echo ${{steps.download.outputs.download-path}}
