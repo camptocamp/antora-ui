@@ -33,7 +33,7 @@ jobs:
           release_name: Release LATEST
           body: |
             Release of the bundle-ui
-          draft: false
+          draft: true
           prerelease: true
       - name: Upload Release Asset
         id: upload-release-asset 
