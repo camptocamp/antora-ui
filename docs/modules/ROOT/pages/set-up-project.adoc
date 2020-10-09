@@ -3,21 +3,39 @@
 :idprefix:
 :idseparator: -
 // URIs:
-:uri-project: https://gitlab.com/antora/antora-ui-default.git
+:camptocamp-project-name: antora-ui
+:camptocamp-url-project: git@github.com:camptocamp/{camptocamp-project-name}.git
+:uri-c2c-project: https://gitlab.com/camptocamp/{camptocamp-project-name}.git
+:uri-project: https://gitlab.com/antora/antora-ui-default
 
 Before you can start working on the UI, you need to grab the sources and initialize the project.
-The sources can be {uri-project}[Antora's default UI] or an existing UI project structured to work with Antora.
+The sources can be {uri-c2c-project}[Antora's Camptocamp UI] or an existing UI project structured to work with Antora.
 
-== Fetch the Default UI project
+== Fetch the UI project
 
-To start, clone the default UI project using git:
+To start, clone the UI project using git. To maintain this repository up-to-date with the upstream, please clone the UI project following this procedure:
 
-[subs=attributes+]
- $ git clone {uri-project} &&
-   cd "`basename $_`"
+Clone the project::
+[source,bash,subs=attributes+]
+$ git clone {camptocamp-url-project} && cd "{camptocamp-project-name}"
+$ git remote -v
+$ git remote add upstream {uri-project}
+$ git remote -v
 
-The example above clones Antora's default UI project and then switches to the project folder on your filesystem.
-Stay in this project folder in order to initialize the project using npm.
+Create a local branch synced with the original repository::
+[source,bash,subs=attributes+]
+$ git fetch upstream
+$ git checkout -b upstream_master upstream/master
+
+Syncronize local branch with upstream:: 
+[source,bash,subs=attributes+]
+$ git checkout upstream_master
+$ git pull
+$ git checkout my-branch
+$ git pull
+$ git rebase upstream_master
+
+CAUTION: Stay in this project folder in order to initialize the project using npm.
 
 == Install dependencies
 

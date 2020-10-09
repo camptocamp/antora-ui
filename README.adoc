@@ -22,35 +22,7 @@
 :url-nvm-install: {url-nvm}#installation
 :url-source-maps: https://developer.mozilla.org/en-US/docs/Tools/Debugger/How_to/Use_a_source_map
 
-Based on {url-project}
-
-
-[NOTE]
-====
-To maintain this repository up-to-date with the upstream, please do the following:
-
-[source,bash,subs=attributes+]
-$ git clone {camptocamp-url-project} && cd "{camptocamp-project-name}"
-$ git remote -v
-$ git remote add upstream {url-project}
-$ git remote -v
-
-Create a local branch synced with the original repository
-
-[source,bash,subs=attributes+]
-$ git fetch upstream
-$ git checkout -b upstream_master upstream/master
-
-Syncronize local branch with upstream
-
-[source,bash,subs=attributes+]
-$ git checkout my-branch
-$ git pull
-$ git merge upstream_master
-
-For more explanation, read this blog post : https://statnmap.com/2019-05-12-keep-github-gitlab-fork-up-to-date[Keep a github/gitlab fork up-to-date]
-
-====
+NOTE: Based on {url-project}
 
 == Use the UI
 
@@ -141,14 +113,33 @@ Now that you have the prerequisites installed, you can fetch and build the UI pr
 
 === Clone and Initialize the UI Project
 
-Clone the default UI project using git:
+Clone the UI project using git. To maintain this repository up-to-date with the upstream, please clone the UI project following this procedure:
 
-[subs=attributes+]
- $ git clone {url-project} &&
-   cd "`basename $_`"
+[source,bash,subs=attributes+]
+$ git clone {camptocamp-url-project} && cd "{camptocamp-project-name}"
+$ git remote -v
+$ git remote add upstream {url-project}
+$ git remote -v
 
-The example above clones Antora's default UI project and then switches to the project folder on your filesystem.
-Stay in this project folder when executing all subsequent commands.
+Create a local branch synced with the original repository
+
+[source,bash,subs=attributes+]
+$ git fetch upstream
+$ git checkout -b upstream_master upstream/master
+
+Syncronize local branch with upstream
+
+[source,bash,subs=attributes+]
+$ git checkout upstream_master
+$ git pull
+$ git checkout my-branch
+$ git pull
+$ git rebase upstream_master
+
+[NOTE]
+====
+For more explanation on maintaining a fork up-to-date with the upstream, read this blog post : https://statnmap.com/2019-05-12-keep-github-gitlab-fork-up-to-date[Keep a github/gitlab fork up-to-date]
+====
 
 Use npm to install the project's dependencies inside the project.
 In your terminal, execute the following command:
