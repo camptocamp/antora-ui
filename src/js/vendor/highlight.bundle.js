@@ -17,6 +17,7 @@
   hljs.registerLanguage('shell', require('highlight.js/lib/languages/shell'))
   hljs.registerLanguage('xml', require('highlight.js/lib/languages/xml'))
   hljs.registerLanguage('yaml', require('highlight.js/lib/languages/yaml'))
+  hljs.registerLanguage('terraform', window.hljsDefineTerraform)
   ;[].slice.call(document.querySelectorAll('pre code.hljs')).forEach(function (node) {
     hljs.highlightBlock(node)
   })
