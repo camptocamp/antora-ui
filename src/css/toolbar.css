@@ -40,7 +40,7 @@
 }
 
 .home-link {
-  background: url(../img/c2c_favicon.png) no-repeat 50% 45%;
+  background: url(../img/favicon.png) no-repeat 50% 45%;
   background-size: 50%;
   display: block;
   height: 2.5rem;
@@ -50,7 +50,7 @@
 
 .home-link:hover,
 .home-link.is-current {
-  background-image: url(../img/c2c_favicon.png);
+  background-image: url(../img/favicon.png);
 }
 
 .edit-this-page {
