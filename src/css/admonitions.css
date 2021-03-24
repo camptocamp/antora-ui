@@ -1,0 +1,36 @@
+.doc .admonitionblock .icon {
+  border-radius: 1rem;
+}
+
+.doc .admonitionblock .icon i::after {
+  font-family: var(--body-font-family) !important;
+}
+
+i.fa[class^='icon-'],
+i.fa[class*=' icon-']::before {
+  content: "";
+  height: 1.25rem;
+  width: 1.25rem;
+  margin-right: 0.25rem;
+  margin-left: -0.5rem;
+}
+
+i.fa.icon-note::before {
+  background: no-repeat url("../img/admonitions/note.svg");
+}
+
+i.fa.icon-tip::before {
+  background: no-repeat url("../img/admonitions/tip.svg");
+}
+
+i.fa.icon-important::before {
+  background: no-repeat url("../img/admonitions/important.svg");
+}
+
+i.fa.icon-warning::before {
+  background: no-repeat url("../img/admonitions/warning.svg");
+}
+
+i.fa.icon-caution::before {
+  background: no-repeat url("../img/admonitions/caution.svg");
+}
