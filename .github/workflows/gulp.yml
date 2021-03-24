@@ -4,7 +4,7 @@ name: Run Gulp bundle
 on:
   push:
     # On which branch
-    branches: ["master"]
+    branches: ["master", "devops-stack"]
     # On which files
     # paths: ["scripts/scripts.js", "styles/styles.scss"]
 
@@ -28,16 +28,17 @@ jobs:
           keep_latest: 0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: nelonoel/branch-name@v1.0.1
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          tag_name: LATEST
-          release_name: Release LATEST
+          tag_name: "${{ env.BRANCH_NAME }}-LATEST"
+          release_name: "Release ${{ env.BRANCH_NAME }}-LATEST"
           body: |
-            Release of the bundle-ui
+            Release of the bundle-ui for ${{ env.BRANCH_NAME }}
           draft: false
           prerelease: true
       - name: Upload Release Asset
