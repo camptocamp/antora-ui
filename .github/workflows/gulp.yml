@@ -40,5 +40,5 @@ jobs:
           body: |
             Release of the bundle-ui for ${{ env.BRANCH_NAME }}
           draft: false
-          prerelease: true
+          prerelease: false
           files: build/ui-bundle.zip
