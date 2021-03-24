@@ -4,7 +4,7 @@ name: Run Gulp bundle
 on:
   push:
     # On which branch
-    branches: ["master", "devops-stack"]
+    branches: "master"
     # On which files
     # paths: ["scripts/scripts.js", "styles/styles.scss"]
 
