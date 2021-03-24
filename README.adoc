@@ -32,7 +32,7 @@ To use the Camptocamp's UI for your Antora-generated site, add the following UI 
 ----
 ui:
   bundle:
-    url: https://github.com/camptocamp/antora-ui/releases/download/LATEST/ui-bundle.zip
+    url: https://github.com/camptocamp/antora-ui/releases/download/master-LATEST/ui-bundle.zip
     snapshot: true
 ----
 
