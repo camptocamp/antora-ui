@@ -43,7 +43,7 @@ If the URL were to be unique, this setting would not be required.
 == Development Quickstart
 
 This section offers a basic tutorial to teach you how to set up the default UI project, preview it locally, and bundle it for use with Antora.
-A more comprehensive can be found in the documentation at {url-antora-docs}.
+A more comprehensive tutorial can be found in the documentation at {url-antora-docs}.
 
 === Prerequisites
 
