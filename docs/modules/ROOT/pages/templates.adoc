@@ -99,6 +99,9 @@ Properties include name (since 2.3), version, displayVersion, prerelease (if set
 | page.module
 | The name of the module for the current page.
 
+| page.relativeSrcPath
+| The path of the current page relative to the pages directory in the current module (since 2.3).
+
 | page.version
 | The name of the version for the current page.
 
@@ -149,7 +152,7 @@ A quick way to force this property to be `true` (even if the repository is publi
 Then, the "Edit the Page" link will not appear.
 
 | page.home
-| Indicates whether the current page is the home page of the site.
+| Indicates whether the current page is the start (aka home) page of the site.
 
 | page.layout
 | The page layout for the current page.
