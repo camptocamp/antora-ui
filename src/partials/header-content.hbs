@@ -13,7 +13,12 @@
     {{!--
     <div id="topbar-nav" class="navbar-menu">
       <div class="navbar-end">
-        <a class="navbar-item" href="#">Home</a>
+      {{#if (eq env.DOCSEARCH_ENABLED 'true')}}
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      {{/if}}
+        <a class="navbar-item" href="https://github.com/camptocamp/devops-stack"><i class="fa fa-github-alt"></i>&nbsp;GitHub</a>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Products</a>
           <div class="navbar-dropdown">
