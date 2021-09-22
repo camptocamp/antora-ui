@@ -46,7 +46,7 @@ The bundle includes a "doc search" based on https://github.com/Mogztter/antora-s
 For enabling this feature you need to `DOCSEARCH_ENABLED=true` when generating antora doc, see command below.
 
 You can generate your Antora-based site (with search bar and static search index file) with the following command:
- 
+
  $ npm i -g antora-site-generator-lunr
  $ DOCSEARCH_INDEX_VERSION=latest DOCSEARCH_ENABLED=true NODE_PATH="$(npm -g root)" antora --generator antora-site-generator-lunr antora-playbook.yml --to-dir docs/output --cache-dir=./.cache
 
