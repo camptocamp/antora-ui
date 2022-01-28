@@ -24,6 +24,12 @@
 
 NOTE: Based on {url-project}
 
+== Code of Conduct
+
+The Antora project and its project spaces are governed by our https://gitlab.com/antora/antora/-/blob/HEAD/CODE-OF-CONDUCT.adoc[Code of Conduct].
+By participating, you're agreeing to honor this code.
+Let's work together to make this a welcoming, professional, inclusive, and safe environment for everyone.
+
 == Use the UI
 
 To use the Camptocamp's UI for your Antora-generated site, add the following UI configuration to your playbook:
@@ -39,16 +45,6 @@ ui:
 NOTE: The `snapshot` flag tells Antora to fetch the UI when the `--fetch` command-line flag is present.
 This setting is required because updates to the UI bundle are pushed to the same URL.
 If the URL were to be unique, this setting would not be required.
-
-=== Use the UI with doc search
-
-The bundle includes a "doc search" based on https://github.com/Mogztter/antora-site-generator-lunr[antora-site-generator-lunr].
-For enabling this feature you need to `DOCSEARCH_ENABLED=true` when generating antora doc, see command below.
-
-You can generate your Antora-based site (with search bar and static search index file) with the following command:
-
- $ npm i -g antora-site-generator-lunr
- $ DOCSEARCH_INDEX_VERSION=latest DOCSEARCH_ENABLED=true NODE_PATH="$(npm -g root)" antora --generator antora-site-generator-lunr antora-playbook.yml --to-dir docs/output --cache-dir=./.cache
 
 == Development Quickstart
 
@@ -219,15 +215,15 @@ These map files sit adjacent to the combined files in the build folder.
 The mapping they provide allows the debugger to present the original source rather than the obfuscated file, an essential tool for debugging.
 
 In preview mode, source maps are enabled automatically, so there's nothing you have to do to make use of them.
-If you need to include source maps in the bundle, you can do so by setting the `SOURCEMAPS` environment varible to `true` when you run the bundle command:
+If you need to include source maps in the bundle, you can do so by setting the `SOURCEMAPS` environment variable to `true` when you run the bundle command:
 
  $ SOURCEMAPS=true gulp bundle
 
-In this case, the bundle will include the source maps, which can be used for debuggging your production site.
+In this case, the bundle will include the source maps, which can be used for debugging your production site.
 
 == Copyright and License
 
-Copyright (C) 2017-2019 OpenDevise Inc. and the Antora Project.
+Copyright (C) 2017-present OpenDevise Inc. and the Antora Project.
 
 Use of this software is granted under the terms of the https://www.mozilla.org/en-US/MPL/2.0/[Mozilla Public License Version 2.0] (MPL-2.0).
 See link:LICENSE[] to find the full license text.

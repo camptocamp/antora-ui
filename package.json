@@ -14,7 +14,7 @@
     "last 2 versions"
   ],
   "devDependencies": {
-    "asciidoctor.js": "1.5.9",
+    "@asciidoctor/core": "~2.2",
     "autoprefixer": "~9.7",
     "browser-pack-flat": "~3.4",
     "browserify": "~16.5",
@@ -53,10 +53,5 @@
     "typeface-roboto-mono": "0.0.75",
     "vinyl-buffer": "~1.0",
     "vinyl-fs": "~3.0"
-  },
-  "dependencies": {
-    "@antora/cli": "^2.3.4",
-    "@antora/site-generator-default": "^2.3.4",
-    "antora-site-generator-lunr": "^0.5.0"
   }
 }
