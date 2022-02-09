@@ -1,7 +1,4 @@
 = Work with the Handlebars Templates
-// Settings:
-:idprefix:
-:idseparator: -
 
 Antora combines the Handlebars templates with the converted AsciiDoc content and other UI model data to make the pages in the site.
 These "`logic-less`" templates are mostly HTML with some special mustache tags sprinkled in where content should be inserted.
@@ -30,7 +27,7 @@ Variable names and purposes may change.
 Here's an overview of the available UI model:
 
 .Variables available to the Handlebars templates (top-level variables in bold)
-[#template-variables-table,cols="1m,2"]
+[#template-variables-ref,cols="1m,2"]
 |===
 | Name | Description
 
@@ -39,15 +36,20 @@ s| [[site]]site
 
 | site.url
 | The base URL of the site, if specified in the playbook.
+If a site start page is defined, the visitor will be redirected from this location to the start page.
 
 | site.path
 | The pathname (i.e., subpath) of the site.url under which the site is hosted (e.g., /docs).
 This value is empty if site.url is not defined, has no path segment, or matches /.
-Can be removed from the site.url value using a helper (e.g., `deleteSuffix site.url site.path`)
+Can be dropped from the site.url value using a helper (e.g., `deleteSuffix site.url site.path`)
+Can be prepended to `page.url` to create a root-relative URL for a page (e.g., `+{{{site.path}}}{{{page.url}}}+`).
 (since Antora 2.1)
 
 | site.title
 | The title of the site.
+
+| site.homeUrl
+| The URL that points directly to the start (aka home) page of the site.
 
 | site.components
 | A map of all the components in the site, keyed by component name.
@@ -82,6 +84,9 @@ For example, the value of the document attribute named `page-support-phone` can 
 Page attributes can be defined per page in the AsciiDoc document header (e.g., `:page-support-phone: +1 212-555-1234`) or globally in the playbook under the key `asciidoc.attributes`.
 The `page-` prefix is used to isolate page-related attributes from the numerous other document attributes in AsciiDoc.
 
+| page.author
+| The first author of the document, if one or more authors are specified in the AsciiDoc header.
+
 | page.description
 | The text of the description attribute in the AsciiDoc header, if specified.
 
@@ -112,6 +117,11 @@ Properties include name (since 2.3), version, displayVersion, prerelease (if set
 | All versions of the current page, including the current page.
 Each entry has the properties url, string, and missing.
 
+| page.latest
+| The entry from `page.versions` that corresponds to the latest version available of this page.
+The latest page may not come from the latest version of the component (if the page is missing in that version).
+This property is not set if this page is in a versionless component.
+
 | page.breadcrumbs
 | An array of breadcrumb items that represent the current selection in the navigation tree.
 Includes text-only and external items.
@@ -127,8 +137,8 @@ It's often used as the base URL to generate relative URLs from this page.
 
 | page.canonicalUrl
 | The canonical URL for the current page.
-The canonicalUrl is only set if site.url is set.
-If there are multiple versions of the component, the canonical URL is the qualified URL of the most recent version of the page (excluding any prerelease versions).
+The canonicalUrl is only set if site.url is set to an absolute URL and the page's component has at least one non-prerelease version.
+If there are multiple versions of the component, the canonical URL is the qualified URL of the most recent, non-prerelease version of the page.
 If there's only a single version of the component, the canonical URL is the qualified URL of the current page.
 
 | page.editUrl
@@ -171,6 +181,8 @@ s| env
 
 s| siteRootPath
 | The relative path to the root of the published site.
+If a site start page is defined, the visitor will be redirected from this location to the start page.
+Can be used as a fallback when a site URL is not set.
 
 s| uiRootPath
 | The relative path to the root directory of the UI.
@@ -194,6 +206,6 @@ Next, open the file [.path]_templates/partials/head.hbs_ and add your tag.
 ----
 
 Each template file has access to the template model, which exposes information about the current page through variable names.
-The variables currently available are listed in <<template-variables-table>>.
+The variables currently available are listed in <<template-variables-ref>>.
 
 Save the file, commit it to git, push the branch, and allow the approval workflow to play out.

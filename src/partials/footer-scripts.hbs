@@ -1,13 +1,6 @@
-<script>
-  window.antora = window.antora || {}
-  window.antora.basePath = '{{or siteRootPath (or site.url siteRootUrl)}}'
-  window.antora.pagePath = '{{@root.page.url}}'
-</script>
 <script src="{{{uiRootPath}}}/js/site.js"></script>
-{{#if (eq env.DOCSEARCH_ENABLED 'true')}}
-<script src="{{uiRootPath}}/js/vendor/lunr.js"></script>
-<script src="{{uiRootPath}}/js/vendor/search.js"></script>
-<script async src="{{uiRootPath}}/../search-index.js"></script>
-{{/if}}
 <script async src="{{{uiRootPath}}}/js/vendor/terraform.js"></script>
 <script async src="{{{uiRootPath}}}/js/vendor/highlight.js"></script>
+{{#if env.SITE_SEARCH_PROVIDER}}
+{{> search-scripts}}
+{{/if}}

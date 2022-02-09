@@ -6,7 +6,7 @@ Author Name
 :!table-caption:
 :page-pagination:
 
-image:multirepo-ssg.svg[Multirepo SSG,200,float=right]
+image:multirepo-ssg.svg[Multirepo SSG,200,150,float=right]
 Platonem complectitur mediocritatem ea eos.
 Ei nonumy deseruisse ius.
 Mel id omnes verear.
@@ -21,10 +21,12 @@ https://example.org[Curabitur,role=unresolved] ut massa aliquam, cursus enim et,
 
 Nominavi luptatum eos, an vim hinc philosophia intellegebat.
 Lorem pertinacia `expetenda` et nec, [.underline]#wisi# illud [.line-through]#sonet# qui ea.
+H~2~0.
+E = mc^2^.
 Eum an doctus <<liber-recusabo,maiestatis efficiantur>>.
-Eu mea inani iriure.
+Eu mea inani iriure.footnote:[Quisque porta facilisis tortor, vitae bibendum velit fringilla vitae! Lorem ipsum dolor sit amet, consectetur adipiscing elit.]
 
-[source,json]
+[,json]
 ----
 {
   "name": "module-name",
@@ -39,7 +41,7 @@ Eu mea inani iriure.
 ----
 
 .Example paragraph syntax
-[source,asciidoc]
+[,asciidoc]
 ----
 .Optional title
 [example]
@@ -49,24 +51,43 @@ This is an example paragraph.
 .Optional title
 [example]
 This is an example paragraph.
+
+.Summary *Spoiler Alert!*
+[%collapsible]
+====
+Details.
+
+Loads of details.
+====
+
+[,asciidoc]
+----
+Voila!
+----
+
+.Result
+[%collapsible.result]
+====
+Voila!
+====
 
 === Some Code
 
 How about some code?
 
-[source,js]
+[,js]
 ----
 vfs
   .src('js/vendor/*.js', { cwd: 'src', cwdbase: true, read: false })
-  .pipe(tap((file) => { // <1>
+  .pipe(tap((file) => { // <.>
     file.contents = browserify(file.relative, { basedir: 'src', detectGlobals: false }).bundle()
   }))
-  .pipe(buffer()) // <2>
+  .pipe(buffer()) // <.>
   .pipe(uglify())
   .pipe(gulp.dest('build'))
 ----
-<1> The tap function is used to wiretap the data in the pipe.
-<2> Wrap each streaming file in a buffer so the files can be processed by uglify.
+<.> The `tap` function is used to wiretap the data in the pipe.
+<.> Wrap each streaming file in a buffer so the files can be processed by uglify.
 Uglify can only work with buffers, not streams.
 
 Execute these commands to validate and build your site:
@@ -104,7 +125,7 @@ m|"foo\nbar"
 l|foo
 bar
 a|
-[source,ruby]
+[,ruby]
 ----
 puts "foo\nbar"
 ----
@@ -124,6 +145,7 @@ Altera atomorum his ex, has cu elitr melius propriae.
 Eos suscipit scaevola at.
 ****
 
+[.rolename]
 === Liber recusabo
 
 No sea, at invenire voluptaria mnesarchum has.
@@ -252,7 +274,7 @@ Est in reque homero principes, meis deleniti mediocrem ad has.
 Ex nam suas nemore dignissim, vel apeirian democritum et.
 
 .Antora is a multi-repo documentation site generator
-image::multirepo-ssg.svg[Multirepo SSG,250]
+image::multirepo-ssg.svg[Multirepo SSG,3000,opts=interactive]
 
 Make the switch today!
 
@@ -262,7 +284,7 @@ Make the switch today!
 Altera atomorum his ex, has cu elitr melius propriae.
 Eos suscipit scaevola at.
 
-[quote, 'Famous Person. Cum dicat putant ne.', 'Cum dicat putant ne. https://example.com[Famous Person Website]']
+[,'Famous Person. Cum dicat putant ne.','Cum dicat putant ne. https://example.com[Famous Person Website]']
 ____
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Mauris eget leo nunc, nec tempus mi? Curabitur id nisl mi, ut vulputate urna.
